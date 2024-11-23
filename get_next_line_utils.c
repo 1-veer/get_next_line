@@ -58,7 +58,7 @@ char	*ft_join(char *s1, char *s2)
 		return (dupp(s1));
 	str = malloc(sizeof(char) * (get_len(s1) + get_len(s2) + 1));
 	if (!str)
-		return (NULL);
+		return (helper(&s1));
 	i = 0;
 	j = 0;
 	while (s1[i])
