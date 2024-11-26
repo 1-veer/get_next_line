@@ -6,7 +6,7 @@
 /*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:27:42 by abougati          #+#    #+#             */
-/*   Updated: 2024/11/26 12:10:29 by abougati         ###   ########.fr       */
+/*   Updated: 2024/11/26 22:33:40 by abougati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ char	*get_next_line(int fd)
 	static char	*buffer;
 	char		*my_line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE >= 2147483647
-		|| read(fd, NULL, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE > 2147483647)
 		return (helper(&buffer));
 	buffer = read_and_add(fd, buffer);
 	if (!buffer)
@@ -33,7 +32,7 @@ char	*read_and_add(int fd, char *buffer)
 	int		bytes_read;
 	char	*read_buff;
 
-	read_buff = (char *)malloc(BUFFER_SIZE + 1);
+	read_buff = malloc((size_t)BUFFER_SIZE + 1);
 	if (!read_buff)
 		return (NULL);
 	bytes_read = 1;

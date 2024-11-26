@@ -6,7 +6,7 @@
 /*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:59:13 by abougati          #+#    #+#             */
-/*   Updated: 2024/11/26 12:07:57 by abougati         ###   ########.fr       */
+/*   Updated: 2024/11/26 22:01:58 by abougati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ char	*get_next_line(int fd)
 	static char	*buffer[MAX_FD];
 	char		*my_line;
 
-	if (fd < 0 || fd > MAX_FD || BUFFER_SIZE <= 0 || BUFFER_SIZE >= 2147483647
-		|| read(fd, NULL, 0) < 0)
+	if (fd < 0 || fd > MAX_FD || BUFFER_SIZE <= 0 || BUFFER_SIZE >= 2147483647)
 		return (helper(&buffer[fd]));
 	buffer[fd] = read_and_add(fd, buffer[fd]);
 	if (!buffer[fd])
@@ -33,7 +32,7 @@ char	*read_and_add(int fd, char *buffer)
 	int		bytes_read;
 	char	*read_buff;
 
-	read_buff = (char *)malloc(BUFFER_SIZE + 1);
+	read_buff = malloc((size_t)BUFFER_SIZE + 1);
 	if (!read_buff)
 		return (NULL);
 	bytes_read = 1;
@@ -41,17 +40,13 @@ char	*read_and_add(int fd, char *buffer)
 	{
 		bytes_read = read(fd, read_buff, BUFFER_SIZE);
 		if (bytes_read == -1)
-		{
-			free(read_buff);
-			return (NULL);
-		}
+			return (free(read_buff), NULL);
 		if (bytes_read == 0)
 			break ;
 		read_buff[bytes_read] = '\0';
 		buffer = ft_join(&buffer, read_buff);
 	}
-	free(read_buff);
-	return (buffer);
+	return (free(read_buff), buffer);
 }
 
 char	*extract_line(char *buffer)
