@@ -6,7 +6,7 @@
 /*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 15:11:46 by abougati          #+#    #+#             */
-/*   Updated: 2024/11/23 16:19:29 by abougati         ###   ########.fr       */
+/*   Updated: 2024/11/26 12:09:14 by abougati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,32 +44,32 @@ char	*copy(char *buffer, char *line, int i)
 	return (line);
 }
 
-char	*ft_join(char *s1, char *s2)
+char	*ft_join(char **s1, char *s2)
 {
 	char	*str;
 	int		i;
 	int		j;
 
-	if (!s1 && !s2)
+	if (!*s1 && !s2)
 		return (NULL);
-	if (!s1)
+	if (!*s1)
 		return (dupp(s2));
 	if (!s2)
-		return (dupp(s1));
-	str = malloc(sizeof(char) * (get_len(s1) + get_len(s2) + 1));
+		return (dupp(*s1));
+	str = malloc(sizeof(char) * (get_len(*s1) + get_len(s2) + 1));
 	if (!str)
-		return (helper(&s1));
+		return (helper(s1));
 	i = 0;
 	j = 0;
-	while (s1[i])
+	while ((*s1)[i])
 	{
-		str[i] = s1[i];
+		str[i] = (*s1)[i];
 		i++;
 	}
 	while (s2[j])
 		str[i++] = s2[j++];
 	str[i] = '\0';
-	free(s1);
+	free(*s1);
 	return (str);
 }
 

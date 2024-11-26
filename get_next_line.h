@@ -6,7 +6,7 @@
 /*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 15:38:30 by abougati          #+#    #+#             */
-/*   Updated: 2024/11/23 16:28:12 by abougati         ###   ########.fr       */
+/*   Updated: 2024/11/26 12:10:38 by abougati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*helper(char **buffer);
 
 int		check_for_endline(char *buff);
 char	*copy(char *buffer, char *line, int i);
-char	*ft_join(char *s1, char *s2);
+char	*ft_join(char **s1, char *s2);
 char	*dupp(char *s);
 int		get_len(char *s);
 

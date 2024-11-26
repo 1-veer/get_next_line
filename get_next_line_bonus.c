@@ -6,7 +6,7 @@
 /*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:59:13 by abougati          #+#    #+#             */
-/*   Updated: 2024/11/26 09:31:48 by abougati         ###   ########.fr       */
+/*   Updated: 2024/11/26 12:07:57 by abougati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*read_and_add(int fd, char *buffer)
 		if (bytes_read == 0)
 			break ;
 		read_buff[bytes_read] = '\0';
-		buffer = ft_join(buffer, read_buff);
+		buffer = ft_join(&buffer, read_buff);
 	}
 	free(read_buff);
 	return (buffer);
