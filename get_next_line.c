@@ -6,7 +6,7 @@
 /*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:27:42 by abougati          #+#    #+#             */
-/*   Updated: 2024/11/26 22:33:40 by abougati         ###   ########.fr       */
+/*   Updated: 2024/11/28 11:37:21 by abougati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*read_and_add(int fd, char *buffer)
 		if (bytes_read == -1)
 		{
 			free(read_buff);
-			return (NULL);
+			return (helper(&buffer));
 		}
 		if (bytes_read == 0)
 			break ;
@@ -95,7 +95,6 @@ char	*adjust_buffer(char *buffer)
 		return (helper(&buffer));
 	whats_left = copy(buffer + i, whats_left, j);
 	free(buffer);
-	buffer = NULL;
 	return (whats_left);
 }
 
