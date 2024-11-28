@@ -6,7 +6,7 @@
 /*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:59:13 by abougati          #+#    #+#             */
-/*   Updated: 2024/11/28 11:39:18 by abougati         ###   ########.fr       */
+/*   Updated: 2024/11/28 11:50:28 by abougati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ char	*get_next_line(int fd)
 	static char	*buffer[MAX_FD];
 	char		*my_line;
 
-	if (fd < 0 || fd > MAX_FD || BUFFER_SIZE <= 0 || BUFFER_SIZE >= 2147483647)
+	if (fd > MAX_FD)
+		return (NULL);
+	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE >= 2147483647)
 		return (helper(&buffer[fd]));
 	buffer[fd] = read_and_add(fd, buffer[fd]);
 	if (!buffer[fd])
