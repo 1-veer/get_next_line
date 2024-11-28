@@ -17,7 +17,7 @@ char	*get_next_line(int fd)
 	static char	*buffer[MAX_FD];
 	char		*my_line;
 
-	if (fd > MAX_FD)
+	if (fd >= MAX_FD)
 		return (NULL);
 	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE >= 2147483647)
 		return (helper(&buffer[fd]));
