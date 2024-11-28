@@ -19,7 +19,7 @@ char	*get_next_line(int fd)
 
 	if (fd >= MAX_FD)
 		return (NULL);
-	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE >= 2147483647)
+	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE > 2147483647)
 		return (helper(&buffer[fd]));
 	buffer[fd] = read_and_add(fd, buffer[fd]);
 	if (!buffer[fd])
