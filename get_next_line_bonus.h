@@ -21,7 +21,7 @@
 #  define BUFFER_SIZE 256
 # endif
 
-# define MAX_FD 1024
+# define MAX_FD 1048576
 
 char	*get_next_line(int fd);
 char	*read_and_add(int fd, char *buffer);
